@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>{% block title %}BIENVENUE SUR NOTRE SITE DE RÉSERVATIONS D'ÉVÉNENEMENTS{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Réservation d'Événements</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('accueil') }}">Accueil</a>
+        {% if session.loggedin %}
+            <a href="{{ url_for('evenements') }}">Événements</a>
+            {% if session.is_admin %}
+                <a href="{{ url_for('admin') }}">Admin</a>
+            {% endif %}
+            <a href="{{ url_for('deconnexion') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ url_for('inscription') }}">Inscription</a>
+            <a href="{{ url_for('connexion') }}">Connexion</a>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

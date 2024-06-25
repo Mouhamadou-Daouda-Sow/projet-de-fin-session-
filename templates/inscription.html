@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<h2>Inscription</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.nom_utilisateur.label }}
+        {{ form.nom_utilisateur(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.mot_de_passe.label }}
+        {{ form.mot_de_passe(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.confirmer_mot_de_passe.label }}
+        {{ form.confirmer_mot_de_passe(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form.submit() }}</button>
+</form>
+{% endblock %}

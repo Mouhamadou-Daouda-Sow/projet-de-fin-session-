@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Bienvenue sur le site de réservation d'événements</h2>
+    <p>Inscrivez-vous ou connectez-vous pour réserver vos billets.</p>
+    <img src="{{ url_for('static', filename='accueil.jpg') }}" alt="Image d'accueil" style="width: 100%; height: auto;">
+</div>
+{% endblock %}

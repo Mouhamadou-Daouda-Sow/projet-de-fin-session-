@@ -1,0 +1,6 @@
+email_validator
+Flask
+flask_login
+flask_wtf
+mysql-connector-python
+werkzeug

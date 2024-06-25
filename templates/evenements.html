@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Événements{% endblock %}
+
+{% block content %}
+<h2>Événements</h2>
+
+<!-- Barre de recherche -->
+<form method="GET" action="{{ url_for('evenements') }}" class="form-inline mb-4">
+    <input type="text" name="search" placeholder="Rechercher..." class="form-control mr-2" value="{{ request.args.get('search', '') }}">
+    <input type="date" name="date" class="form-control mr-2" value="{{ request.args.get('date', '') }}">
+    <input type="text" name="lieu" placeholder="Lieu" class="form-control mr-2" value="{{ request.args.get('lieu', '') }}">
+    <input type="number" name="billets_min" placeholder="Billets min" class="form-control mr-2" value="{{ request.args.get('billets_min', '') }}">
+    <input type="number" name="billets_max" placeholder="Billets max" class="form-control mr-2" value="{{ request.args.get('billets_max', '') }}">
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+<div class="evenements">
+    {% for evenement in evenements %}
+        <div class="evenement">
+            <h3>{{ evenement.nom }}</h3>
+            <p>{{ evenement.description }}</p>
+            <p>Date et Heure: {{ evenement.date }}</p>
+            <p>Lieu: {{ evenement.lieu }}</p>
+            <p>Billets disponibles: {{ evenement.billets_disponibles }}</p>
+            <a href="{{ url_for('reservation', evenement_id=evenement.id) }}" class="btn btn-primary">Réserver</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

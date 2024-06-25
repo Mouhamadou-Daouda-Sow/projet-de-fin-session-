@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Réservation pour {{ evenement.nom }}{% endblock %}
+
+{% block content %}
+<h2>Réservation pour {{ evenement.nom }}</h2>
+<p><strong>Description:</strong> {{ evenement.description }}</p>
+<p><strong>Date:</strong> {{ evenement.date }}</p>
+<p><strong>Lieu:</strong> {{ evenement.lieu }}</p>
+<p><strong>Billets disponibles:</strong> {{ evenement.billets_disponibles }}</p>
+
+<form method="POST" action="{{ url_for('reservation', evenement_id=evenement.id) }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.billets_reserves.label }}
+        {{ form.billets_reserves(class_='form-control') }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class_='btn btn-primary') }}
+    </div>
+</form>
+{% endblock %}
+

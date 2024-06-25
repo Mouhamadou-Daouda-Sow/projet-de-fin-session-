@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Consulter les Réservations{% endblock %}
+
+{% block content %}
+<h2>Consulter les Réservations</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Réservation</th>
+            <th>Utilisateur</th>
+            <th>Événement</th>
+            <th>Statut</th>
+            <th>Statut de Paiement</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.utilisateur_nom }}</td>
+                <td>{{ reservation.evenement_nom }}</td>
+                <td>{{ reservation.statut }}</td>
+                <td>{{ reservation.statut_paiement }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

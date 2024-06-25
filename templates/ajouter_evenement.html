@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter un événement{% endblock %}
+
+{% block content %}
+<h2>Ajouter un événement</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.nom.label }}
+        {{ form.nom(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label }}
+        {{ form.description(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.date.label }}
+        {{ form.date(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.lieu.label }}
+        {{ form.lieu(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.billets_disponibles.label }}
+        {{ form.billets_disponibles(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form.submit() }}</button>
+</form>
+{% endblock %}
